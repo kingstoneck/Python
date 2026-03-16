@@ -1,0 +1,3 @@
+L:/Python/JSON_Read_Write_8.py seems to be the fast DB writing program, but doesn't have the performance any longer...
+
+Need to be around 5k writes per second.

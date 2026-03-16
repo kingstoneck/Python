@@ -1,0 +1,101 @@
+Install python 3.8.5
+Install websocket
+  pip install websocket
+  
+Install websocket client
+  pip install websocket-client
+
+Restart PC
+  
+#probbaly not needed
+Install websockets
+  pip install websockets
+
+#trying to get around the SSL error
+Install Certifi
+  pip install certifi
+  
+#This did not seem to do anything.  Still getting an SSL error at this point.   
+  C:\Users\kings>py
+  Python 3.8.5 (tags/v3.8.5:580fbb0, Jul 20 2020, 15:57:54) [MSC v.1924 64 bit (AMD64)] on win32
+  Type "help", "copyright", "credits" or "license" for more information.
+  >>> import certifi
+  >>> certifi.where()
+  'C:\\Users\\kings\\AppData\\Roaming\\Python\\Python38\\site-packages\\certifi\\cacert.pem'
+  >>>
+#uninstalled Python and deleted all user directories.  Reinstalled with opening CMD as administrator.  Don't think this did anything...
+#Restarted the PC and everything seems to be ok? 
+
+
+Install mysql connector - this is the version created and supported by Oracle
+	pip install mysql-connector-python
+  
+  
+Install mysqlclient - this is a fork of MySQLdb which isn't updated for Python 3 and allows SScursor connections to the DB
+  pip install mysqlclient
+    #there seems to be a lot of issues installing on Windows 10, but I did not experience them...
+
+Install json-lines:
+  pip install json-lines
+
+#Below is to get the alpaca_trade_api working while not installing as a module
+  Copy files and create approperiate directories
+  pip install requests
+  pip install python-dateutil
+  pip3 install pandas
+  pip3 uninstall numpy
+    #there is an error with the current version of numpy in Windows 10, see the following url:
+    #https://developercommunity.visualstudio.com/content/problem/1207405/fmod-after-an-update-to-windows-2004-is-causing-a.html
+  pip3 install numpy==1.19.3
+  pip3 install msgpack
+  
+  
+  
+Instructions for Ubuntu Server
+  -clean install
+  -set up 3 partitions as follows (200GiB HDD):
+    /sqldb/
+      -150 GiB, for SQL database
+    /trader/
+      -25 GiB, for general trading items.  Create a transfer folder here
+    /
+      -remaining space for system files
+      
+Update
+  sudo apt-get update
+Install updates
+  sudo apt-get upgrade
+  
+Add new users:
+  sudo adduser 'user'
+  transfer
+    -user for transfering files to and from the system
+  trader
+    -user for trading, will need SSH access
+  sql
+    -user to monitor and manager SQL remotely
+    
+  #note, no premissions set at this time
+  
+Grant user sudo access:
+  sudo usermod -aG sudo 'user'
+
+Install MySQL  #instructions from https://www.digitalocean.com/community/tutorials/how-to-install-mysql-on-ubuntu-20-04
+  sudo apt install mysql-server
+Secure the install  
+  sudo mysql_secure_installation
+    -validate password strength
+    -set strength to STRONG (option 2)
+    -set root password
+    -remove root access
+
+Move the DB to the new folder #instrustions from https://www.digitalocean.com/community/tutorials/how-to-move-a-mysql-data-directory-to-a-new-location-on-ubuntu-16-04
+  sudo mysql -u root -p
+    #requires sudo as root cannot access the SQL server.  Must log in as someone other than root
+  
+  
+
+  
+  
+  
+  
